@@ -1,1 +1,2 @@
 # rock-paper-scissors
+This project contains a Rock, Paper, Scissors game that is coded in a javaScript file that is ran through a index.html file. The html file launches a blank webpage where the game is ran in the console.
