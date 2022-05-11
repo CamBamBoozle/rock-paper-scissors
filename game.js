@@ -76,9 +76,15 @@ function playRound(computerSelection, playerSelection) {
 
 //execute
 //for loop to play five games of RPS agianst the user
-for(i=0;i<5;i++) {
+//for(i=0;i<5;i++) {
 
 //uses the computerPlay function for the computer's choice and prompts
 //the user to enter a value
-playRound(computerPlay(), prompt('Enter Rock, Paper, or Scissors:'));
-}
+const btn = document.querySelectorAll('button');
+
+btn.forEach((button) => {
+
+    button.addEventListener('click', (e) => {
+        playRound(computerPlay(), button.id)
+    });
+});
