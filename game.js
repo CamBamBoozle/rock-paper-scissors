@@ -33,11 +33,25 @@ function computerPlay() {
 //function to simulate playing a game of RPS with the computer.
 function playRound(computerSelection, playerSelection) {
 
+    const body = document.querySelector('body');
+
+    //will display the outcome of each game
+    const results = document.createElement('p');
+
+    //user and computer scores on webpage display
+    const user = document.querySelector('.user > .count');
+    const computer = document.querySelector('.computer > .count');
+
+    //user and computer scores in js file
+    let userScore = user.textContent;
+    let computerScore = computer.textContent;
+
+    
     //print error message and exit if a string is not inputted into 
     //playerSelection. Otherwise, converts the string to all upper case
     if (typeof playerSelection !== "string") {
-        console.log('Please input "ROCK", "PAPER", or "SCISSORS"');
-        return;
+        results.innerText = ('Please input "ROCK", "PAPER", or "SCISSORS"');
+        body.appendChild(results);
     }
     else {
         playerSelection = playerSelection.toUpperCase();
@@ -47,13 +61,17 @@ function playRound(computerSelection, playerSelection) {
     //playerSelection is not equal to rock, paper, or scissors
     if (computerSelection === 'ERROR' || (playerSelection !== 'ROCK' &&
     playerSelection !== 'PAPER' && playerSelection !== 'SCISSORS')) {
-        console.log('There was an error with the selections');
+        results.innerText = ('There was an error with the selections');
+        body.appendChild(results);
+        return;
     }
+
 
     //Prints that there's a tie if the computerSelection is equal to the 
     //playerSelection
-    else if (computerSelection === playerSelection) {
-        console.log("It's a tie!");
+    if (computerSelection === playerSelection) {
+        results.innerText = ("It's a tie!");
+        body.appendChild(results);
         return;
     }
 
@@ -62,24 +80,37 @@ function playRound(computerSelection, playerSelection) {
         (computerSelection === 'PAPER' && playerSelection === 'ROCK') ||
         (computerSelection === 'SCISSORS' && playerSelection === 'PAPER')) {
 
-            console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-            return;
+        results.innerText = (`You Lose! ${computerSelection} beats ${playerSelection}`);
+        computerScore++;
+        computer.innerHTML = computerScore;
+        body.appendChild(results);
     }
 
     //if the player wins, display "you win"
     else {
-        console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-        return;
+        results.innerText = (`You Win! ${playerSelection} beats ${computerSelection}`);
+        userScore++;
+        user.innerHTML = userScore;
+        body.appendChild(results);
+    }
+
+    if (computerScore == 5) {
+        results.innerText = ('Sorry! The Computer Wins!\n\n');
+        body.appendChild(results);
+        computer.textContent = 0;
+        user.textContent = 0;
+    }
+
+    else if (userScore == 5) {
+        results.innerText = ('Congrats! You Win!\n\n');
+        body.appendChild(results);
+        computer.textContent = 0;
+        user.textContent = 0;
     }
 }
 
 
-//execute
-//for loop to play five games of RPS agianst the user
-//for(i=0;i<5;i++) {
-
-//uses the computerPlay function for the computer's choice and prompts
-//the user to enter a value
+//uses buttons in the html file as input
 const btn = document.querySelectorAll('button');
 
 btn.forEach((button) => {
