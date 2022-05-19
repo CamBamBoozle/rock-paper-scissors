@@ -34,7 +34,7 @@ function computerPlay() {
 function playRound(computerSelection, playerSelection) {
 
     //body of webpage
-    const body = document.querySelector('body');
+    const body = document.querySelector('.buttons');
 
     //rock/paper/scissors buttons at top of the webpage
     const buttons = document.querySelectorAll('.btn');
