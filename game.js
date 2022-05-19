@@ -33,7 +33,14 @@ function computerPlay() {
 //function to simulate playing a game of RPS with the computer.
 function playRound(computerSelection, playerSelection) {
 
+    //body of webpage
     const body = document.querySelector('body');
+
+    //rock/paper/scissors buttons at top of the webpage
+    const buttons = document.querySelectorAll('.btn');
+
+    //section of webpage that displays who won/loses
+    const outcome = document.querySelector('.outcome');
 
     //will display the outcome of each game
     const results = document.createElement('p');
@@ -46,12 +53,11 @@ function playRound(computerSelection, playerSelection) {
     let userScore = user.textContent;
     let computerScore = computer.textContent;
 
-    
     //print error message and exit if a string is not inputted into 
     //playerSelection. Otherwise, converts the string to all upper case
     if (typeof playerSelection !== "string") {
         results.innerText = ('Please input "ROCK", "PAPER", or "SCISSORS"');
-        body.appendChild(results);
+        outcome.prepend(results);
     }
     else {
         playerSelection = playerSelection.toUpperCase();
@@ -62,7 +68,7 @@ function playRound(computerSelection, playerSelection) {
     if (computerSelection === 'ERROR' || (playerSelection !== 'ROCK' &&
     playerSelection !== 'PAPER' && playerSelection !== 'SCISSORS')) {
         results.innerText = ('There was an error with the selections');
-        body.appendChild(results);
+        outcome.prepend(results);
         return;
     }
 
@@ -71,7 +77,7 @@ function playRound(computerSelection, playerSelection) {
     //playerSelection
     if (computerSelection === playerSelection) {
         results.innerText = ("It's a tie!");
-        body.appendChild(results);
+        outcome.prepend(results);
         return;
     }
 
@@ -83,7 +89,17 @@ function playRound(computerSelection, playerSelection) {
         results.innerText = (`You Lose! ${computerSelection} beats ${playerSelection}`);
         computerScore++;
         computer.innerHTML = computerScore;
-        body.appendChild(results);
+        outcome.prepend(results);
+
+        if (computerScore == 5) {
+            results.innerText = ('Sorry! The Computer Wins!\n\n');
+            outcome.prepend(results);
+
+            //deletes buttons from top of webpage
+            buttons.forEach((button) => {
+                body.removeChild(button)
+            });
+        }
     }
 
     //if the player wins, display "you win"
@@ -91,22 +107,18 @@ function playRound(computerSelection, playerSelection) {
         results.innerText = (`You Win! ${playerSelection} beats ${computerSelection}`);
         userScore++;
         user.innerHTML = userScore;
-        body.appendChild(results);
-    }
+        outcome.prepend(results);
 
-    if (computerScore == 5) {
-        results.innerText = ('Sorry! The Computer Wins!\n\n');
-        body.appendChild(results);
-        computer.textContent = 0;
-        user.textContent = 0;
-    }
-
-    else if (userScore == 5) {
-        results.innerText = ('Congrats! You Win!\n\n');
-        body.appendChild(results);
-        computer.textContent = 0;
-        user.textContent = 0;
-    }
+        if (userScore == 5) {
+            results.innerText = ('Congrats! You Win!\n\n');
+            outcome.prepend(results);
+            
+            //deletes buttons from top of webpage
+            buttons.forEach((button) => {
+                body.removeChild(button)
+            });
+        }
+    }    
 }
 
 
