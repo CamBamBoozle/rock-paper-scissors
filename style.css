@@ -21,7 +21,7 @@ body {
     gap: 16px;;
 }
 
-.btn {
+.btn , .refresh {
     font-size: 30px;
     width:160px;
 }
@@ -39,7 +39,6 @@ body {
 
 .title {
     font-size: 48px;
-    padding: 2px;
     font-weight: bold;
 }
 

@@ -34,10 +34,19 @@ function computerPlay() {
 function playRound(computerSelection, playerSelection) {
 
     //body of webpage
-    const body = document.querySelector('.buttons');
+    const buttons = document.querySelector('.buttons');
 
     //rock/paper/scissors buttons at top of the webpage
-    const buttons = document.querySelectorAll('.btn');
+    const rps = document.querySelectorAll('.btn');
+
+    //button to refresh the webpage
+    const refresh = document.createElement('button');
+    refresh.classList.add('refresh');
+    refresh.innerText = ('Try Again!');
+    //refreshes page when clicked
+    refresh.addEventListener('click', (e) => {
+        location.reload()
+    });
 
     //section of webpage that displays who won/loses
     const outcome = document.querySelector('.outcome');
@@ -96,9 +105,11 @@ function playRound(computerSelection, playerSelection) {
             outcome.prepend(results);
 
             //deletes buttons from top of webpage
-            buttons.forEach((button) => {
-                body.removeChild(button)
+            rps.forEach((button) => {
+                buttons.removeChild(button)
             });
+
+            buttons.appendChild(refresh);
         }
     }
 
@@ -114,16 +125,21 @@ function playRound(computerSelection, playerSelection) {
             outcome.prepend(results);
             
             //deletes buttons from top of webpage
-            buttons.forEach((button) => {
-                body.removeChild(button)
+            rps.forEach((button) => {
+                buttons.removeChild(button)
             });
+            
+            buttons.appendChild(refresh);
         }
     }    
 }
 
 
-//uses buttons in the html file as input
-const btn = document.querySelectorAll('button');
+//uses rock, paper, scissors buttons  as input
+const btn = document.querySelectorAll('.btn');
+
+//button to refresh the page after the game is complete
+const refresh = document.querySelector('.refreah');
 
 btn.forEach((button) => {
 
