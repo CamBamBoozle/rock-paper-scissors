@@ -5,6 +5,9 @@ html {
     padding: 80px;
 
     height: 100%;
+    background-color: rgb(231, 223, 207);
+
+    font-family: 'GranaPadanoMedium';
 }
 
 body {
@@ -14,7 +17,10 @@ body {
     justify-content: center;
 }
 
-
+button {
+    font-family: 'GranaPadanoMedium';
+    border-radius: 0.3em;
+}
 .buttons {
     display: flex;
     justify-content: center;
@@ -24,6 +30,9 @@ body {
 .btn , .refresh {
     font-size: 30px;
     width:160px;
+
+    background-color: rgb(58, 58, 58);
+    color:rgb(255, 255, 255);
 }
 
 .results {
@@ -40,6 +49,8 @@ body {
 .title {
     font-size: 48px;
     font-weight: bold;
+    margin-bottom: 0px;
+    text-decoration: underline;
 }
 
 .score .user, .score .computer {
@@ -48,11 +59,11 @@ body {
 }
 
 .user .count {
-    color: green;
+    color: rgb(27, 194, 27);
 }
 
 .computer .count {
-    color: red;
+    color: rgb(204, 8, 8);
 }
 
 .user , .computer {

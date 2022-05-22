@@ -1,2 +1,5 @@
 # rock-paper-scissors
-This project contains a Rock, Paper, Scissors game that is coded in a javaScript file that is ran through a index.html file. The html file launches a blank webpage where the game is ran in the console.
+This project contains a Rock, Paper, Scissors game that prints the results out the the webpage. The user plays against a computer that randomly selects rock, paper, or scissors. The firt one to reach five wins is declared the winner.
+
+Font provided by fontlibrary.org.
+Project provided by TheOdinProject.com

@@ -101,7 +101,7 @@ function playRound(computerSelection, playerSelection) {
         outcome.prepend(results);
 
         if (computerScore == 5) {
-            results.innerText = ('Sorry! The Computer Wins!\n\n');
+            results.innerText = ('Sorry! The Computer Wins the Game!\n\n');
             outcome.prepend(results);
 
             //deletes buttons from top of webpage
@@ -121,7 +121,7 @@ function playRound(computerSelection, playerSelection) {
         outcome.prepend(results);
 
         if (userScore == 5) {
-            results.innerText = ('Congrats! You Win!\n\n');
+            results.innerText = ('Congrats! You Win the Game!\n\n');
             outcome.prepend(results);
             
             //deletes buttons from top of webpage
